@@ -1,0 +1,185 @@
+/* Lahari's Restaurant - Responsive Optimizations & Mobile Navigation */
+
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-subtle);
+  z-index: 120;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.mob-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: relative;
+  flex: 1;
+  height: 100%;
+}
+
+.mob-nav-item i {
+  font-size: 1.15rem;
+}
+
+.mob-nav-item.active, .mob-nav-item:hover {
+  color: var(--primary);
+}
+
+.mob-badge {
+  position: absolute;
+  top: 6px;
+  right: 22%;
+  background: var(--primary);
+  color: #FFF;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 999px;
+}
+
+/* Tablet & Smaller Screens (< 1024px) */
+@media (max-width: 1024px) {
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-media-card {
+    height: 260px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Mobile Screens (< 768px) */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 74px; /* Space for bottom nav */
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .site-header {
+    height: 64px;
+  }
+
+  .header-search-bar {
+    display: none; /* Move to mobile search container or below hero */
+  }
+
+  .header-actions .dineout-book-btn {
+    display: none;
+  }
+
+  .header-actions .header-cart-btn {
+    display: none; /* Accessible via mobile bottom bar and floating pill */
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
+  }
+
+  .brand-logo-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .hero-main-title {
+    font-size: 2rem;
+  }
+
+  .hero-metrics-bar {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+  }
+
+  .metric-item .metric-val {
+    font-size: 1rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .dish-card {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .dish-image-wrapper {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    height: 120px;
+    border-radius: var(--radius-sm);
+  }
+
+  .dish-content {
+    grid-column: 1;
+    padding: 0;
+  }
+
+  .dish-footer-row {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .cart-drawer {
+    max-width: 100%;
+  }
+
+  .modal-card {
+    max-height: 95vh;
+    border-radius: var(--radius-md);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small Phones (< 480px) */
+@media (max-width: 480px) {
+  .hero-metrics-bar {
+    gap: 0.75rem;
+  }
+
+  .metric-sep {
+    display: none;
+  }
+
+  .eta-hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .eta-otp-badge {
+    align-self: flex-start;
+  }
+}

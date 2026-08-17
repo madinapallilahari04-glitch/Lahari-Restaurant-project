@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lahari's Restaurant & Gourmet Kitchen | Order Online & Table Booking</title>
+  <meta name="description" content="Order authentic Hyderabadi Dum Biryani, Tandoori Delights, Royal North & South Indian dishes online from Lahari's Restaurant. Superfast delivery in 25-35 mins, live tracking, and table reservations." />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- Brand & Location -->
+      <div class="brand-wrapper">
+        <a href="#" class="brand-logo-link" aria-label="Lahari's Restaurant Home">
+          <div class="brand-logo-icon">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <span class="brand-title">Lahari's</span>
+        </a>
+
+        <button class="brand-location-btn" onclick="openAddressPicker()" title="Change delivery address">
+          <i class="fa-solid fa-location-dot text-primary"></i>
+          <span id="user-current-location">Jubilee Hills, Hyderabad</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+        </button>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="header-search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="header-search-input" placeholder="Search for 'Biryani', 'Butter Chicken', 'Tandoori'..." />
+      </div>
+
+      <!-- Header Actions (Theme, Dineout, Cart) -->
+      <div class="header-actions">
+        <button class="icon-action-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <button class="dineout-book-btn" onclick="openModal('book-table-modal')">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Book Table</span>
+        </button>
+
+        <button class="header-cart-btn" onclick="openCartDrawer()" aria-label="View Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main>
+    <!-- Restaurant Hero & Status Banner -->
+    <section class="restaurant-hero-section">
+      <div class="container">
+        <div class="hero-content-grid">
+          <div class="hero-text-block">
+            <div class="hero-status-pill">
+              <span class="pulse"></span>
+              <span>Open Now • Delivering in 25–35 mins</span>
+            </div>
+
+            <h1 class="hero-main-title">
+              Lahari's <span class="gradient-text">Gourmet Kitchen</span> & Restaurant
+            </h1>
+
+            <p class="hero-subtag">
+              Authentic Nizami Dum Biryani, Tandoori Charcoal Kebabs, Rich North Indian Gravies & Artisanal Beverages crafted with royal passion.
+            </p>
+
+            <div class="hero-metrics-bar">
+              <div class="metric-item">
+                <div class="metric-val">
+                  <i class="fa-solid fa-star star-gold"></i>
+                  <span>4.8</span>
+                </div>
+                <span class="metric-lbl">2.8k+ Google Ratings</span>
+              </div>
+
+              <div class="metric-sep"></div>
+
+              <div class="metric-item">
+                <div class="metric-val">
+                  <i class="fa-solid fa-motorcycle text-primary"></i>
+                  <span>25-35 min</span>
+                </div>
+                <span class="metric-lbl">Express Delivery</span>
+              </div>
+
+              <div class="metric-sep"></div>
+
+              <div class="metric-item">
+                <div class="metric-val">
+                  <i class="fa-solid fa-wallet text-secondary"></i>
+                  <span>₹500 for two</span>
+                </div>
+                <span class="metric-lbl">Cost for two</span>
+              </div>
+
+              <div class="metric-sep"></div>
+
+              <div class="metric-item">
+                <div class="metric-val">
+                  <i class="fa-solid fa-shield-halved text-success"></i>
+                  <span>FSSAI Certified</span>
+                </div>
+                <span class="metric-lbl">Lic: 13622014000492</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Cover Image Card -->
+          <div class="hero-media-card">
+            <img src="assets/images/hero.jpg" alt="Lahari's Restaurant Royal Dining Ambiance" class="hero-cover-img" />
+            <div class="hero-media-overlay">
+              <div class="overlay-floating-badge">
+                <i class="fa-solid fa-medal"></i>
+                <div>
+                  <strong>Zomato Dining & Delivery Choice 2026</strong>
+                  <p style="font-size: 0.75rem; color: #475569;">Voted #1 Royal Dining Experience in Hyderabad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offers & Coupons Carousel Section -->
+    <section class="coupons-section">
+      <div class="container">
+        <div class="section-label-row">
+          <h2 class="section-title">
+            <i class="fa-solid fa-fire text-primary"></i> Exclusive Offers & Deals
+          </h2>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Click any coupon to apply</span>
+        </div>
+
+        <div class="coupons-slider" id="coupons-carousel-container">
+          <!-- Dynamic Coupon Cards injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Category Navigation Bar -->
+    <nav class="category-sticky-nav" id="category-bar">
+      <div class="container">
+        <div class="category-scroll-container" id="category-chips-list">
+          <!-- Dynamic Category Pills injected via app.js -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Menu Catalog & Filters Section -->
+    <section class="menu-catalog-section" id="menu-catalog-section">
+      <div class="container">
+        <!-- Filter Toolbar -->
+        <div class="menu-toolbar">
+          <div class="filter-pills-group">
+            <!-- Pure Veg Toggle -->
+            <label class="diet-switch-label">
+              <input type="checkbox" id="veg-only-switch" />
+              <span class="switch-indicator"></span>
+              <span class="diet-symbol veg"><span class="dot"></span></span>
+              <span>Pure Veg Only</span>
+            </label>
+
+            <!-- Bestseller Filter Chip -->
+            <button class="filter-chip-btn" id="bestseller-chip">
+              <i class="fa-solid fa-award text-secondary"></i>
+              <span>Bestsellers</span>
+            </button>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="sort-select-wrapper">
+            <i class="fa-solid fa-arrow-down-short-wide text-muted"></i>
+            <select id="sort-select" aria-label="Sort dishes">
+              <option value="popular">Sort: Most Popular</option>
+              <option value="rating">Sort: Rating (High to Low)</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Results Counter -->
+        <div class="menu-results-count" id="menu-results-count">
+          Showing 17 dishes
+        </div>
+
+        <!-- Dishes Grid -->
+        <div class="menu-grid" id="menu-grid-container">
+          <!-- Dynamic Dish Cards injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews & Testimonials Section -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-label-row">
+          <div>
+            <h2 class="section-title">
+              <i class="fa-solid fa-heart text-primary"></i> Loved by 10,000+ Foodies
+            </h2>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Real verified experiences from Swiggy, Zomato & Dine-in guests</p>
+          </div>
+          <button class="btn btn-secondary" onclick="openModal('review-modal')">
+            <i class="fa-solid fa-pen-to-square"></i> Write a Review
+          </button>
+        </div>
+
+        <div class="reviews-grid" id="reviews-grid">
+          <!-- Dynamic Reviews injected via app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-wrapper" style="margin-bottom: 1rem;">
+            <div class="brand-logo-icon"><i class="fa-solid fa-utensils"></i></div>
+            <span class="brand-title">Lahari's</span>
+          </div>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #94A3B8;">
+            Experience the royal heritage of Hyderabadi culinary craftsmanship, delivered hot to your doorstep or served in luxury at our Jubilee Hills dining room.
+          </p>
+          <p style="font-size: 0.85rem; color: #64748B;">
+            <i class="fa-solid fa-location-dot"></i> Road No. 36, Jubilee Hills, Hyderabad - 500033<br />
+            <i class="fa-solid fa-phone"></i> +91 98765 43210 / 040-23456789
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore Menu</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="selectCategory('biryani')">Hyderabadi Dum Biryani</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('starters')">Tandoor & Starters</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('curries')">Royal North Indian</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('south-indian')">South Indian Classics</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('desserts')">Shahi Desserts</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="openModal('book-table-modal')">Table Reservation (Dineout)</a></li>
+            <li><a href="javascript:void(0)" onclick="openCartDrawer()">Online Food Delivery</a></li>
+            <li><a href="javascript:void(0)" onclick="if(orderTracker.activeOrder) openModal('live-tracking-modal'); else showToast('No active orders right now!', 'info');">Track Active Order</a></li>
+            <li><a href="javascript:void(0)">Catering & Private Events</a></li>
+            <li><a href="javascript:void(0)">FSSAI Hygiene Report</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem; font-size: 1.25rem;">
+            <a href="#" class="icon-action-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon-action-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon-action-btn" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <span style="font-size: 0.75rem; color: #64748B;">SAFETY CERTIFICATION</span>
+            <p style="font-size: 0.85rem; color: var(--success); font-weight: 600; margin-top: 2px;">
+              <i class="fa-solid fa-circle-check"></i> 100% Contactless Delivery & Sanitized Kitchen
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Lahari's Restaurant & Gourmet Kitchen. All rights reserved. Crafted for food lovers everywhere.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile/Desktop Cart Bar -->
+  <div class="floating-cart-bar" id="floating-cart-bar" onclick="openCartDrawer()">
+    <div class="floating-cart-left">
+      <span id="floating-cart-count">1 ITEM</span>
+      <strong id="floating-cart-total">₹389</strong>
+    </div>
+    <div class="floating-cart-btn">
+      <span>View Cart</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="#" class="mob-nav-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="#menu-catalog-section" class="mob-nav-item">
+      <i class="fa-solid fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openModal('book-table-modal')" class="mob-nav-item">
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>Book Table</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openCartDrawer()" class="mob-nav-item">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>Cart</span>
+      <span class="mob-badge cart-count-badge" style="display: none;">0</span>
+    </a>
+    <a href="javascript:void(0)" onclick="toggleTheme()" class="mob-nav-item">
+      <i class="fa-solid fa-moon"></i>
+      <span>Theme</span>
+    </a>
+  </nav>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="drawer-backdrop" id="drawer-backdrop" onclick="closeCartDrawer()"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart Drawer">
+    <div class="drawer-header">
+      <h3>
+        <i class="fa-solid fa-bag-shopping text-primary"></i>
+        <span>Your Gourmet Basket</span>
+      </h3>
+      <button class="close-drawer-btn" onclick="closeCartDrawer()" aria-label="Close cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-scroll-body">
+      <!-- Empty State -->
+      <div class="cart-empty-state" id="cart-empty-state">
+        <i class="fa-solid fa-cart-shopping fa-3x"></i>
+        <h3>Your basket is empty</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Explore our mouth-watering biryanis, kebabs, and curries!</p>
+        <button class="btn btn-primary" onclick="closeCartDrawer()" style="margin-top: 0.5rem;">Browse Menu</button>
+      </div>
+
+      <!-- Active Cart Content -->
+      <div id="cart-drawer-content" style="display: none;">
+        <!-- Free Delivery Progress Meter -->
+        <div class="free-delivery-meter" id="free-delivery-meter"></div>
+
+        <!-- Delivery Address Quick Confirmation -->
+        <div style="background: var(--bg-elevated); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-location-dot text-primary"></i>
+            <div>
+              <strong style="display: block;">Delivering to Home</strong>
+              <span style="color: var(--text-muted); font-size: 0.75rem;">Jubilee Hills, Hyderabad</span>
+            </div>
+          </div>
+          <button class="text-primary" onclick="openAddressPicker()" style="font-weight: 700; font-size: 0.8rem;">Change</button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-drawer-items"></div>
+
+        <!-- Promo Code Box -->
+        <div style="margin-top: 0.5rem;">
+          <div class="applied-coupon-display" id="applied-coupon-display" style="display: none;"></div>
+          <div class="coupon-input-box">
+            <input type="text" id="drawer-coupon-input" placeholder="Enter Coupon Code (e.g. LAHARI50)" />
+            <button class="btn btn-secondary" onclick="const val = document.getElementById('drawer-coupon-input').value; if(val) cart.applyCoupon(val);">Apply</button>
+          </div>
+        </div>
+
+        <!-- Delivery Instructions -->
+        <div style="background: var(--bg-elevated); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <strong style="font-size: 0.85rem; display: block; margin-bottom: 0.5rem;"><i class="fa-solid fa-hand-holding-hand text-secondary"></i> Delivery Instructions</strong>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="filter-chip-btn" onclick="this.classList.toggle('active'); cart.toggleDeliveryInstruction('Avoid Calling');">
+              <i class="fa-solid fa-phone-slash"></i> Avoid calling
+            </button>
+            <button class="filter-chip-btn" onclick="this.classList.toggle('active'); cart.toggleDeliveryInstruction('Leave at door');">
+              <i class="fa-solid fa-door-open"></i> Leave at door
+            </button>
+            <button class="filter-chip-btn" onclick="this.classList.toggle('active'); cart.toggleDeliveryInstruction('Do not ring bell');">
+              <i class="fa-solid fa-bell-slash"></i> Don't ring bell
+            </button>
+          </div>
+        </div>
+
+        <!-- Tip Delivery Partner -->
+        <div style="background: var(--bg-elevated); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <strong style="font-size: 0.85rem; display: block; margin-bottom: 0.35rem;"><i class="fa-solid fa-heart text-danger"></i> Tip your delivery partner</strong>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">100% of the tip goes directly to your partner.</p>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="filter-chip-btn" onclick="cart.setTip(20)">₹20</button>
+            <button class="filter-chip-btn" onclick="cart.setTip(30)">₹30</button>
+            <button class="filter-chip-btn" onclick="cart.setTip(50)">₹50</button>
+            <button class="filter-chip-btn" onclick="cart.setTip(0)">None</button>
+          </div>
+        </div>
+
+        <!-- Bill Details Breakdown -->
+        <div class="bill-breakdown-box"></div>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="drawer-footer" id="drawer-footer">
+      <button class="btn btn-primary checkout-proceed-btn" onclick="proceedToCheckout()">
+        <span>Proceed to Checkout</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Customization Modal -->
+  <div class="modal-overlay" id="customization-modal">
+    <div class="modal-card">
+      <button class="modal-close-icon-btn" onclick="closeModal('customization-modal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="customization-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Checkout & Payment Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <button class="modal-close-icon-btn" onclick="closeModal('checkout-modal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="checkout-modal-container">
+        <div class="checkout-header">
+          <h2>Complete Your Order</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Review delivery location and select payment method</p>
+        </div>
+
+        <!-- Address Box -->
+        <div class="checkout-step-box">
+          <div class="checkout-step-title">
+            <i class="fa-solid fa-location-crosshairs text-primary"></i>
+            <strong>Delivery Address</strong>
+          </div>
+          <p id="checkout-delivery-address" style="font-size: 0.9rem; color: var(--text-muted);">
+            Flat 402, Signature Towers, Road 36, Jubilee Hills, Hyderabad
+          </p>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="checkout-step-box">
+          <div class="checkout-step-title">
+            <i class="fa-solid fa-credit-card text-secondary"></i>
+            <strong>Select Payment Option</strong>
+          </div>
+
+          <div class="payment-methods-grid">
+            <label class="payment-card-option">
+              <input type="radio" name="payment-method" value="upi" checked />
+              <i class="fa-brands fa-google-pay text-primary"></i>
+              <span>UPI / GPay</span>
+            </label>
+
+            <label class="payment-card-option">
+              <input type="radio" name="payment-method" value="card" />
+              <i class="fa-solid fa-credit-card text-secondary"></i>
+              <span>Credit / Debit</span>
+            </label>
+
+            <label class="payment-card-option">
+              <input type="radio" name="payment-method" value="cod" />
+              <i class="fa-solid fa-money-bill-wave text-success"></i>
+              <span>Cash on Delivery</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Bill Overview -->
+        <div class="bill-breakdown-box"></div>
+
+        <button class="btn btn-primary" onclick="handlePlaceOrder()" style="padding: 1rem; font-size: 1.05rem;">
+          <i class="fa-solid fa-lock"></i>
+          <span>Pay & Place Order</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Order Tracking Simulation Modal -->
+  <div class="modal-overlay" id="live-tracking-modal">
+    <div class="modal-card" style="max-width: 600px;">
+      <button class="modal-close-icon-btn" onclick="closeModal('live-tracking-modal')" aria-label="Close tracking">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="tracking-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Book a Table (Dineout Style) Modal -->
+  <div class="modal-overlay" id="book-table-modal">
+    <div class="modal-card" style="max-width: 540px;">
+      <button class="modal-close-icon-btn" onclick="closeModal('book-table-modal')" aria-label="Close table booking">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="padding: 1.75rem;">
+        <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem; margin-bottom: 1.25rem;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--secondary); letter-spacing: 1px;">ZOMATO DINEOUT PARTNER</span>
+          <h2 style="font-size: 1.5rem; margin-top: 2px;">Reserve a Table at Lahari's</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Get instant confirmation + 15% flat off on your dining bill!</p>
+        </div>
+
+        <form id="table-booking-form" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Select Date</label>
+              <input type="date" id="book-date" class="form-input" required value="2026-08-18" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Time Slot</label>
+              <select id="book-time" class="form-input" required>
+                <option value="07:30 PM (Dinner)">07:30 PM (Dinner)</option>
+                <option value="08:00 PM (Dinner)">08:00 PM (Dinner)</option>
+                <option value="08:30 PM (Prime Dinner)">08:30 PM (Prime Dinner)</option>
+                <option value="09:00 PM (Dinner)">09:00 PM (Dinner)</option>
+                <option value="01:00 PM (Lunch)">01:00 PM (Lunch)</option>
+                <option value="01:30 PM (Lunch)">01:30 PM (Lunch)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Number of Guests</label>
+              <select id="book-guests" class="form-input" required>
+                <option value="2">2 Guests (Couple Table)</option>
+                <option value="4" selected>4 Guests (Family Table)</option>
+                <option value="6">6 Guests</option>
+                <option value="8">8 Guests (Large Group)</option>
+                <option value="12">12+ Guests (Party Suite)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Seating Area</label>
+              <select id="book-area" class="form-input" required>
+                <option value="rooftop">Rooftop Sky Lounge</option>
+                <option value="indoor_ac" selected>Royal AC Dining Hall</option>
+                <option value="candlelight">Candlelight Romance Corner</option>
+                <option value="vip_lounge">VIP Family Suite</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Your Full Name</label>
+              <input type="text" id="book-name" class="form-input" placeholder="e.g. Lahari K." required value="Lahari K." />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Phone Number</label>
+              <input type="tel" id="book-phone" class="form-input" placeholder="+91 98765..." required value="+91 98765 43210" />
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Special Occasion / Notes (Optional)</label>
+            <input type="text" id="book-occasion" class="form-input" placeholder="e.g. Birthday Celebration, Anniversary, High Chair needed" />
+            <input type="hidden" id="book-email" value="lahari@restaurant.com" />
+            <input type="hidden" id="book-requests" value="Window seat preferred" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 0.95rem; font-size: 1.05rem; margin-top: 0.5rem;">
+            <i class="fa-solid fa-crown"></i> Confirm Reservation
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation Confirmation Pass Modal -->
+  <div class="modal-overlay" id="reservation-success-modal">
+    <div class="modal-card" style="max-width: 480px;">
+      <button class="modal-close-icon-btn" onclick="closeModal('reservation-success-modal')" aria-label="Close pass">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="reservation-ticket-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Write a Review Modal -->
+  <div class="modal-overlay" id="review-modal">
+    <div class="modal-card" style="max-width: 480px;">
+      <button class="modal-close-icon-btn" onclick="closeModal('review-modal')" aria-label="Close review">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="padding: 1.75rem;">
+        <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+          <h2 style="font-size: 1.35rem;">Rate Your Experience</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">How was your feast at Lahari's Restaurant?</p>
+        </div>
+
+        <form id="user-review-form" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Your Name</label>
+            <input type="text" id="review-name" class="form-input" placeholder="e.g. Rahul S." required />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Overall Rating</label>
+            <select id="review-rating-val" class="form-input">
+              <option value="5">⭐⭐⭐⭐⭐ (5.0 - Outstanding!)</option>
+              <option value="4">⭐⭐⭐⭐ (4.0 - Great Food)</option>
+              <option value="3">⭐⭐⭐ (3.0 - Average)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Review Title</label>
+            <input type="text" id="review-title" class="form-input" placeholder="e.g. Best Biryani in Hyderabad!" required />
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 4px;">Your Comments</label>
+            <textarea id="review-content" class="form-input" rows="3" placeholder="Tell us about the flavors, packaging, or ambiance..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 0.85rem;">
+            Submit Review
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/reservation.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

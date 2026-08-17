@@ -1,0 +1,23 @@
+{
+  "name": "laharis-restaurant-website",
+  "version": "1.0.0",
+  "description": "Premium online restaurant website for Lahari's Restaurant featuring food ordering, live tracking, coupon engine, and Dineout table reservation.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "restaurant",
+    "swiggy",
+    "zomato",
+    "food-delivery",
+    "table-booking",
+    "hyderabadi-biryani"
+  ],
+  "author": "Lahari's Gourmet Kitchen",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-git": "^1.41.4"
+  }
+}
