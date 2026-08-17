@@ -1,0 +1,24 @@
+# Google App Engine (Standard Environment) Configuration
+runtime: nodejs20
+instance_class: F1
+
+env_variables:
+  NODE_ENV: 'production'
+  PORT: '8080'
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 2
+  target_cpu_utilization: 0.65
+
+handlers:
+  # Static assets (images, css, js)
+  - url: /(assets|css|js)/(.*)
+    static_files: \1/\2
+    upload: (assets|css|js)/(.*)
+    secure: always
+
+  # Main application handler
+  - url: /.*
+    script: auto
+    secure: always

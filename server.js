@@ -1,9 +1,10 @@
-// Built-in Lightweight Static Web Server for Lahari's Restaurant
+// Production Web Server for Google Cloud (Cloud Run / App Engine) & Local Dev
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 8080;
+const HOST = '0.0.0.0';
 const PUBLIC_DIR = path.join(__dirname);
 
 const MIME_TYPES = {
@@ -25,6 +26,13 @@ const server = http.createServer((req, res) => {
   let reqUrl = req.url.split('?')[0];
   if (reqUrl === '/') reqUrl = '/index.html';
 
+  // Health check endpoint for Google Cloud Load Balancer / Cloud Run
+  if (reqUrl === '/healthz' || reqUrl === '/_ah/health') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('OK');
+    return;
+  }
+
   const filePath = path.normalize(path.join(PUBLIC_DIR, reqUrl));
 
   if (!filePath.startsWith(PUBLIC_DIR)) {
@@ -45,7 +53,7 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'no-cache'
+      'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=86400'
     });
 
     const stream = fs.createReadStream(filePath);
@@ -53,9 +61,9 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   console.log(`====================================================`);
-  console.log(`👑 Lahari's Restaurant Web Application is Live!`);
-  console.log(`🌐 Local URL: http://localhost:${PORT}`);
+  console.log(`👑 Lahari's Restaurant Server Running on Google Cloud / Local`);
+  console.log(`🌐 URL: http://${HOST}:${PORT}`);
   console.log(`====================================================`);
 });
